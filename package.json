@@ -1,0 +1,41 @@
+{
+  "name": "oxswap-core",
+  "version": "0.7.8",
+  "license": "MIT",
+  "description": "Core contracts for the OxSwap protocol on Harmony",
+  "files": [
+    "contracts",
+    "build"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oxswap/oxswap-core.git"
+  },
+  "keywords": [
+    "oxswap",
+    "oxswap contracts",
+    "harmony"
+  ],
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.1.0",
+    "@openzeppelin/test-helpers": "^0.5.11",
+    "truffle-flattener": "^1.5.0",
+    "@truffle/contract": "^4.4.6",
+    "@truffle/hdwallet-provider": "^2.0.1",
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "chai": "^4.3.4",
+    "ethereum-waffle": "^3.3.0",
+    "ethers": "^5.1.4",
+    "hardhat": "^2.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/oxswap/oxswap-core/issues"
+  },
+  "homepage": "https://github.com/oxswap/oxswap-core#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "TheOpenFinanceProject"
+}
