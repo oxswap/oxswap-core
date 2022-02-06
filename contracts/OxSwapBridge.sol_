@@ -1,0 +1,35 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity 0.6.12;
+
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "./OxSwapToken.sol";
+
+
+contract OxSwapBridge is ReentrancyGuard {
+	IERC20 public oxswapV1;
+	OxSwapToken public oxswapV2;
+	address public burnAddress = 0xdEad000000000000000000000000000000000000;
+
+	constructor(IERC20 _oxswapV1, OxSwapToken _oxswapV2) public {
+		oxswapV1 = _oxswapV1;
+		oxswapV2 = _oxswapV2;
+	}
+
+	event Bridge(address indexed user, uint amount);
+
+	function convert(uint256 _amount) public nonReentrant {
+		require(msg.sender == tx.origin, "Must be called directly");
+
+		bool success = false;
+
+		success = oxswapV1.transferFrom(msg.sender, burnAddress, _amount);
+
+		require(success == true, 'transfer failed');
+
+		oxswapV2.bridgeMint(msg.sender, _amount);
+		emit Bridge(msg.sender, _amount);
+		
+	}
+}
